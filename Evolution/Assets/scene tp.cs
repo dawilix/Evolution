@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class scenetp : MonoBehaviour
+public class SceneTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void OnTriggerEnter()
-    {
- 
+    // Имя сцены для загрузки (задаётся в Инспекторе)
+    public string map;
 
-        
-    }
-
-    // Update is called once per frame
-    void Save()
+    // Метод, вызываемый при входе в триггер
+    private void OnTriggerEnter(Collider other)
     {
-        
+        // Проверяем, что в триггер вошёл объект с тегом "Player"
+        if (other.CompareTag("Player"))
+        {
+            // Загружаем новую сцену
+            SceneManager.LoadScene(map);
+        }
     }
 }
